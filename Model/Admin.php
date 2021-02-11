@@ -101,11 +101,11 @@ class Admin extends Blog
     {
       $i = [
         'id'     => $id,
-        'image'  => $name
+        'photo'  => $name
       ];
 
-      $oStmt = $this->oDb->prepare('UPDATE Posts SET image = :image WHERE id = :id');
-      move_uploaded_file($tmp_name,"static/img/posts/".$i['image']);
+      $oStmt = $this->oDb->prepare('UPDATE Animal SET photo = :photo WHERE id = :id');
+      move_uploaded_file($tmp_name,"static/img/posts/".$i['photo']);
       return $oStmt->execute($i);
     }
 
@@ -114,11 +114,11 @@ class Admin extends Blog
     {
       $i = [
         'id'     => $this->oDb->lastInsertId(),
-        'image'  => $this->oDb->lastInsertId().$extension
+        'photo'  => $this->oDb->lastInsertId().$extension
       ];
 
-      $oStmt = $this->oDb->prepare('UPDATE Posts SET image = :image WHERE id = :id');
-      move_uploaded_file($tmp_name,"static/img/posts/".$i['image']);
+      $oStmt = $this->oDb->prepare('UPDATE Animal SET photo = :photo WHERE id = :id');
+      move_uploaded_file($tmp_name,"static/img/posts/".$i['photo']);
       return $oStmt->execute($i);
     }
 
@@ -192,11 +192,10 @@ class Admin extends Blog
     // }
 
 
-    // public function add(array $aData)
-    // {
-    //   $oStmt = $this->oDb->prepare('INSERT INTO Posts (title, body, createdDate) VALUES(:title, :body, NOW())');
-    //   $oStmt->bindValue(':title', $aData['title'], \PDO::PARAM_STR);
-    //   $oStmt->bindValue(':body', $aData['body'], \PDO::PARAM_LOB);
-    //   return $oStmt->execute();
-    // }
+    public function add(array $aData)
+    {
+      $oStmt = $this->oDb->prepare('INSERT INTO Animal (nom) VALUES(:nom)');
+      $oStmt->bindValue(':nom', $aData['nom'], \PDO::PARAM_STR);
+      return $oStmt->execute();
+    }
 }

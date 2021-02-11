@@ -72,27 +72,27 @@ class Admin extends Blog
 
       if (isset($_POST['add_submit']))
       {
-          if (empty($_POST['title']) || empty($_POST['body']))
+          if (empty($_POST['nom']))
           {
-            $this->oUtil->sErrMsg = 'Tous les champs doivent être remplis.';
+            $this->oUtil->sErrMsg = 'Tous les champs doivent être remplis 2.';
           }
           else
           {
             $this->oUtil->getModel('Admin');
             $this->oModel = new \BlogPhp\Model\Admin;
 
-            $aData = array('title' => $_POST['title'], 'body' => $_POST['body'], 'created_date' => date('Y-m-d H:i:s'));
+            $aData = array('nom' => $_POST['nom']);
             $this->oModel->add($aData);
 
-            if (!empty($_FILES['image']['name']))
+            if (!empty($_FILES['photo']['name']))
             {
-              $file = $_FILES['image']['name'];
+              $file = $_FILES['photo']['name'];
               $extensions = ['.png','.jpg','.jpeg','.gif','.PNG','.JPG','.JPEG','.GIF'];
               $extension = strrchr($file, '.');
               if(!in_array($extension,$extensions)){
-        				  $this->oUtil->sErrMsg = "Cette image n'est pas valable";
+        				  $this->oUtil->sErrMsg = "Cette photo n'est pas valable";
         			}
-              $this->oModel->postImg($_FILES['image']['tmp_name'], $extension);
+              $this->oModel->postImg($_FILES['photo']['tmp_name'], $extension);
             }
 
             $this->oUtil->sSuccMsg = 'L\'article a bien été ajouté !';
