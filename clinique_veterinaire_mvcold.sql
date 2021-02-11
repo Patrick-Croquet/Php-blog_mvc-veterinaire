@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 11 fév. 2021 à 12:54
--- Version du serveur :  8.0.21
--- Version de PHP : 7.4.9
+-- Host: 127.0.0.1:3306
+-- Generation Time: Feb 11, 2021 at 09:16 AM
+-- Server version: 8.0.21
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `clinique_veterinaire_mvc`
+-- Database: `clinique_veterinaire_mvc`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `animal`
+-- Table structure for table `animal`
 --
 
 DROP TABLE IF EXISTS `animal`;
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `animal` (
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `animal`
+-- Dumping data for table `animal`
 --
 
 INSERT INTO `animal` (`id`, `type`, `nom`, `dateNaissance`, `dateDeces`, `breed`, `photo`, `idProprietaire`) VALUES
@@ -56,7 +56,7 @@ INSERT INTO `animal` (`id`, `type`, `nom`, `dateNaissance`, `dateDeces`, `breed`
 -- --------------------------------------------------------
 
 --
--- Structure de la table `chat`
+-- Table structure for table `chat`
 --
 
 DROP TABLE IF EXISTS `chat`;
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `chat` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `chat`
+-- Dumping data for table `chat`
 --
 
 INSERT INTO `chat` (`idAnimal`, `idRace`) VALUES
@@ -78,7 +78,7 @@ INSERT INTO `chat` (`idAnimal`, `idRace`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `chien`
+-- Table structure for table `chien`
 --
 
 DROP TABLE IF EXISTS `chien`;
@@ -89,21 +89,21 @@ CREATE TABLE IF NOT EXISTS `chien` (
   `idRace` int NOT NULL,
   PRIMARY KEY (`idAnimal`),
   KEY `fk_chien_race_chien_idx` (`idRace`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `chien`
+-- Dumping data for table `chien`
 --
 
 INSERT INTO `chien` (`idAnimal`, `taille`, `poids`, `idRace`) VALUES
-(3, 35, 15, 3),
-(4, 48, 20, 1),
-(5, 40, 24, 2);
+(1, 35, 15, 2),
+(2, 48, 20, 5),
+(3, 40, 24, 2);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `comments`
+-- Table structure for table `comments`
 --
 
 DROP TABLE IF EXISTS `comments`;
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
 ) ENGINE=MyISAM AUTO_INCREMENT=107 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `comments`
+-- Dumping data for table `comments`
 --
 
 INSERT INTO `comments` (`id`, `user_id`, `comment`, `post_id`, `date`, `seen`, `signals`) VALUES
@@ -133,7 +133,7 @@ INSERT INTO `comments` (`id`, `user_id`, `comment`, `post_id`, `date`, `seen`, `
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dossier`
+-- Table structure for table `dossier`
 --
 
 DROP TABLE IF EXISTS `dossier`;
@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `dossier` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `dossier`
+-- Dumping data for table `dossier`
 --
 
 INSERT INTO `dossier` (`id`, `antecedents`) VALUES
@@ -154,7 +154,7 @@ INSERT INTO `dossier` (`id`, `antecedents`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `effectuer`
+-- Table structure for table `effectuer`
 --
 
 DROP TABLE IF EXISTS `effectuer`;
@@ -166,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `effectuer` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `effectuer`
+-- Dumping data for table `effectuer`
 --
 
 INSERT INTO `effectuer` (`idGarde`, `idVeterinaire`) VALUES
@@ -176,7 +176,7 @@ INSERT INTO `effectuer` (`idGarde`, `idVeterinaire`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `garde`
+-- Table structure for table `garde`
 --
 
 DROP TABLE IF EXISTS `garde`;
@@ -189,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `garde` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `garde`
+-- Dumping data for table `garde`
 --
 
 INSERT INTO `garde` (`id`, `date`, `heure_debut`, `heure_fin`) VALUES
@@ -199,7 +199,7 @@ INSERT INTO `garde` (`id`, `date`, `heure_debut`, `heure_fin`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `horaire`
+-- Table structure for table `horaire`
 --
 
 DROP TABLE IF EXISTS `horaire`;
@@ -214,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `horaire` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `horaire`
+-- Dumping data for table `horaire`
 --
 
 INSERT INTO `horaire` (`id`, `jour`, `heureDebut`, `heureFin`, `idVeterinaire`) VALUES
@@ -224,7 +224,7 @@ INSERT INTO `horaire` (`id`, `jour`, `heureDebut`, `heureFin`, `idVeterinaire`) 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `medicament`
+-- Table structure for table `medicament`
 --
 
 DROP TABLE IF EXISTS `medicament`;
@@ -239,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `medicament` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `medicament`
+-- Dumping data for table `medicament`
 --
 
 INSERT INTO `medicament` (`id`, `nom`, `dosage`, `indications`, `effetsSecondaires`, `laboratoire`) VALUES
@@ -249,7 +249,7 @@ INSERT INTO `medicament` (`id`, `nom`, `dosage`, `indications`, `effetsSecondair
 -- --------------------------------------------------------
 
 --
--- Structure de la table `posts`
+-- Table structure for table `posts`
 --
 
 DROP TABLE IF EXISTS `posts`;
@@ -264,7 +264,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
 ) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `posts`
+-- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`id`, `title`, `body`, `image`, `image2`, `createdDate`) VALUES
@@ -276,7 +276,7 @@ INSERT INTO `posts` (`id`, `title`, `body`, `image`, `image2`, `createdDate`) VA
 -- --------------------------------------------------------
 
 --
--- Structure de la table `prescrire`
+-- Table structure for table `prescrire`
 --
 
 DROP TABLE IF EXISTS `prescrire`;
@@ -288,7 +288,7 @@ CREATE TABLE IF NOT EXISTS `prescrire` (
 ) ENGINE=MyISAM AUTO_INCREMENT=443 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `prescrire`
+-- Dumping data for table `prescrire`
 --
 
 INSERT INTO `prescrire` (`idVisite`, `idMedicament`, `posologie`) VALUES
@@ -298,7 +298,7 @@ INSERT INTO `prescrire` (`idVisite`, `idMedicament`, `posologie`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `proprietaire`
+-- Table structure for table `proprietaire`
 --
 
 DROP TABLE IF EXISTS `proprietaire`;
@@ -315,7 +315,7 @@ CREATE TABLE IF NOT EXISTS `proprietaire` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `proprietaire`
+-- Dumping data for table `proprietaire`
 --
 
 INSERT INTO `proprietaire` (`id`, `nom`, `prenom`, `rue`, `codePostal`, `ville`, `telephone`, `telephoneMobile`) VALUES
@@ -325,7 +325,7 @@ INSERT INTO `proprietaire` (`id`, `nom`, `prenom`, `rue`, `codePostal`, `ville`,
 -- --------------------------------------------------------
 
 --
--- Structure de la table `race_chat`
+-- Table structure for table `race_chat`
 --
 
 DROP TABLE IF EXISTS `race_chat`;
@@ -333,21 +333,21 @@ CREATE TABLE IF NOT EXISTS `race_chat` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `race_chat`
+-- Dumping data for table `race_chat`
 --
 
 INSERT INTO `race_chat` (`id`, `nom`) VALUES
-(36, 'Ragdoll'),
-(37, 'Maine Coon'),
-(45, 'Bengal');
+(1, 'Ragdoll'),
+(2, 'Maine Coon'),
+(3, 'Bengal');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `race_chien`
+-- Table structure for table `race_chien`
 --
 
 DROP TABLE IF EXISTS `race_chien`;
@@ -358,7 +358,7 @@ CREATE TABLE IF NOT EXISTS `race_chien` (
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `race_chien`
+-- Dumping data for table `race_chien`
 --
 
 INSERT INTO `race_chien` (`id`, `nom`) VALUES
@@ -369,7 +369,7 @@ INSERT INTO `race_chien` (`id`, `nom`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -383,7 +383,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `admin`, `pseudo`) VALUES
@@ -395,7 +395,7 @@ INSERT INTO `users` (`id`, `email`, `password`, `admin`, `pseudo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `veterinaire`
+-- Table structure for table `veterinaire`
 --
 
 DROP TABLE IF EXISTS `veterinaire`;
@@ -409,7 +409,7 @@ CREATE TABLE IF NOT EXISTS `veterinaire` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `veterinaire`
+-- Dumping data for table `veterinaire`
 --
 
 INSERT INTO `veterinaire` (`id`, `nom`, `prenom`, `telephone`, `telephoneMobile`) VALUES
@@ -419,7 +419,7 @@ INSERT INTO `veterinaire` (`id`, `nom`, `prenom`, `telephone`, `telephoneMobile`
 -- --------------------------------------------------------
 
 --
--- Structure de la table `visite`
+-- Table structure for table `visite`
 --
 
 DROP TABLE IF EXISTS `visite`;
@@ -436,7 +436,7 @@ CREATE TABLE IF NOT EXISTS `visite` (
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `visite`
+-- Dumping data for table `visite`
 --
 
 INSERT INTO `visite` (`id`, `dateVisite`, `heureVisite`, `raison`, `idDossier`, `idAnimal`, `idVeterinaire`) VALUES
@@ -447,7 +447,7 @@ INSERT INTO `visite` (`id`, `dateVisite`, `heureVisite`, `raison`, `idDossier`, 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `votes`
+-- Table structure for table `votes`
 --
 
 DROP TABLE IF EXISTS `votes`;
