@@ -20,7 +20,7 @@
 		<div class="col s12">
 			<div class="input-field file-field">
 				<div class="btn">
-					<span>Image de l'article</span>
+					<span>Photo de l'animal</span>
 					<input type="file" name="photo">
 				</div>
 				<div class="file-path-wrapper">

@@ -17,7 +17,7 @@ class Admin extends Blog
       $this->oUtil->getView('edit');
     }
 
-    // Affiche la page d'edition d'article
+    // Affiche la page d'edition du dossier
     // Suite à l'envoie du formulaire, on récupère les données saisies pour puis on update les données du post.
     // Si on modifie l'image associée, on vérifie que l'extension existe (jpg, png ...)
     public function editPost()
@@ -51,7 +51,7 @@ class Admin extends Blog
             $this->oModel->updateImg($_FILES['image']['name'], $_GET['id'], $_FILES['image']['tmp_name']);
           }
 
-          $this->oUtil->sSuccMsg = 'L\'article a bien été mis à jour !';
+          $this->oUtil->sSuccMsg = 'Le dossier a bien été mis à jour !';
 
         }
       }
@@ -95,7 +95,7 @@ class Admin extends Blog
               $this->oModel->postImg($_FILES['photo']['tmp_name'], $extension);
             }
 
-            $this->oUtil->sSuccMsg = 'L\'article a bien été ajouté !';
+            $this->oUtil->sSuccMsg = 'Le dossier a bien été ajouté !';
           }
       }
 
