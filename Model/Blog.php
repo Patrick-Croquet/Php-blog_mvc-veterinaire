@@ -31,8 +31,9 @@ class Blog
 
   public function getById($iId)
   {
-    $oStmt = $this->oDb->prepare('SELECT t1.id, t1.dateNaissance, t1.photo, t1.nom, t1.breed, t1.type FROM
-         (SELECT id, nom,dateNaissance,photo,breed,type FROM animal) AS t1 WHERE id = :animalId LIMIT 1 ');
+    $oStmt = $this->oDb->prepare('SELECT t1.id, t1.dateNaissance, t1.photo, t1.nom, t2.nom as race FROM 
+    (SELECT id, nom, dateNaissance, photo FROM animal) AS t1 INNER JOIN 
+    (SELECT idAnimal, nom FROM chat As A INNER JOIN race_chat AS B ON A.idRace = B.id UNION SELECT idAnimal, nom FROM chien As A INNER JOIN race_chien AS B ON A.idRace = B.id order by idAnimal) AS t2 ON t1.id = t2.idAnimal WHERE t1.id = :animalId LIMIT 1 ');
     $oStmt->bindParam(':animalId', $iId, \PDO::PARAM_INT);
     $oStmt->execute();
     return $oStmt->fetch(\PDO::FETCH_OBJ);
@@ -61,9 +62,18 @@ class Blog
 
   public function getAll()
   {
-    $oStmt = $this->oDb->query('SELECT t1.id, t1.dateNaissance, t1.photo, t1.nom, t1.breed, t1.type FROM
-    (SELECT id, nom,dateNaissance,photo,breed,type FROM animal) AS t1 
-     ORDER BY id');
+    $oStmt = $this->oDb->query('
+    SELECT t1.id, t1.dateNaissance, t1.photo, t1.nom, t2.nom as race FROM 
+    (SELECT id, nom, dateNaissance, photo FROM animal) AS t1 INNER JOIN 
+    (SELECT idAnimal, nom FROM chat As A INNER JOIN race_chat AS B ON A.idRace = B.id 
+    UNION 
+    SELECT idAnimal, nom FROM chien As A INNER JOIN race_chien AS B ON A.idRace = B.id order by idAnimal) 
+    AS t2 ON t1.id = t2.idAnimal');
+    
+    
+    //SELECT t1.id, t1.dateNaissance, t1.photo, t1.nom, t1.breed, t1.type FROM
+    //(SELECT id, nom,dateNaissance,photo,breed,type FROM animal) AS t1 
+    // ORDER BY id');
     return $oStmt->fetchAll(\PDO::FETCH_OBJ);
   }
 

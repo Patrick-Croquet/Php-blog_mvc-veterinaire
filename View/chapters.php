@@ -13,8 +13,8 @@
               <!-- On affiche les 1200 premiers caractères et on affiche pas les images -->
   						<p>Date de naissance : <?= preg_replace("/<img[^>]+\>/i", "", nl2br(mb_strimwidth($oAnimal->dateNaissance, 0, 800, '...'))); ?><br>
 						<p>Animal id :<?= preg_replace("/<img[^>]+\>/i", "", nl2br(mb_strimwidth($oAnimal->id, 0, 800, '...'))); ?><br>
-						<p>Animal race :<?= preg_replace("/<img[^>]+\>/i", "", nl2br(mb_strimwidth($oAnimal->breed, 0, 800, '...'))); ?><br>
-						<p>Type d'animal :<?= preg_replace("/<img[^>]+\>/i", "", nl2br(mb_strimwidth($oAnimal->type, 0, 800, '...'))); ?><br>
+						<p>Animal race :<?= preg_replace("/<img[^>]+\>/i", "", nl2br(mb_strimwidth($oAnimal->race, 0, 800, '...'))); ?><br>
+						<!--<p>Type d'animal :<?//= preg_replace("/<img[^>]+\>/i", "", nl2br(mb_strimwidth($oAnimal->type, 0, 800, '...'))); ?><br>-->
 
 
               <br><br>

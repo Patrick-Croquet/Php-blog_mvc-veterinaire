@@ -15,9 +15,9 @@
                 <h1><?=htmlspecialchars($this->oAnimal->nom)?></h1>
                 <p>Animal id : <?=nl2br($this->oAnimal->id)?></p> 
                 <p>Date de naissance : <?=  nl2br($this->oAnimal->dateNaissance); ?><br>
-				<!--<p>Animal race :<?//= nl2br($this->oAnimal->race); ?><br>-->
-				<p>Animal race :<?= nl2br($this->oAnimal->breed); ?><br>
-				<p>Type d'animal :<?=  nl2br($this->oAnimal->type); ?><br>
+				<p>Animal race :<?= nl2br($this->oAnimal->race); ?><br>
+				<!--<p>Animal race :<?//= nl2br($this->oAnimal->breed); ?><br>
+				<p>Type d'animal :<?=  nl2br($this->oAnimal->type); ?><br>-->
                 <img src="<?=ROOT_URL?>static/img/posts/<?= $this->oAnimal->photo ?>" class="activator right circle" alt="">
             </article>
             <hr>
